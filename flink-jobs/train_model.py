@@ -8,9 +8,8 @@ np.random.seed(42)
 n = 10000
 amounts = np.random.uniform(10, 20000, n)
 velocities = np.random.randint(1, 20, n)
-country_risk = np.random.randint(0, 3, n)  # 0=safe 1=medium 2=high
+country_risk = np.random.randint(0, 3, n)
 
-# Fraud = high amount + high velocity + risky country
 labels = ((amounts > 5000) & (velocities > 5) & (country_risk == 2)).astype(int)
 X = np.column_stack([amounts, velocities, country_risk])
 
@@ -22,7 +21,7 @@ X_test = scaler.transform(X_test)
 
 model = LogisticRegression()
 model.fit(X_train, y_train)
-print(f'Model accuracy: {model.score(X_test, y_test):.2%}')
+print(f'Accuracy: {model.score(X_test, y_test):.2%}')
 
 joblib.dump({'model': model, 'scaler': scaler}, 'fraud_model.pkl')
-print('Saved fraud_model.pkl')
+print('Saved to fraud_model.pkl')

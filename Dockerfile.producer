@@ -1,0 +1,7 @@
+FROM python:3.9-slim
+
+RUN pip install kafka-python faker
+
+COPY flink-jobs/producer.py /app/producer.py
+
+CMD ["python", "/app/producer.py"]
