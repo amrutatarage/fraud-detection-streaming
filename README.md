@@ -2,8 +2,6 @@
 
 **Kafka • Flink 2.0 • PyFlink • ML • Docker • Grafana • PostgreSQL**
 
-Amruta Tarage | K.K. Wagh Institute of Engineering Education & Research  
-Department of Information Technology | TYIT 2024-25
 
 ## Overview
 
