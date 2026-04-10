@@ -2,7 +2,9 @@
 
 [![Open in GitHub Codespaces](https://github.com/codespaces/badge.svg)](https://codespaces.new/amrutatarage/fraud-detection-project)
 
-<video src="demo.mp4" autoplay loop muted playsinline width="100%"></video>
+
+https://github.com/user-attachments/assets/507df2d8-2b0f-4df5-96cb-22e5a5a50ae2
+
 
 **Kafka • Flink 2.0 • PyFlink • ML • Docker • Grafana • PostgreSQL**
 
