@@ -1,0 +1,31 @@
+{
+    "name": "Enterprise Fraud Pipeline",
+    "dockerComposeFile": [
+        "../docker-compose.yml"
+    ],
+    "service": "grafana",
+    "workspaceFolder": "/workspace",
+    "forwardPorts": [
+        3000,
+        8081,
+        9092
+    ],
+    "portsAttributes": {
+        "3000": {
+            "label": "Grafana SOC Dashboard",
+            "onAutoForward": "notify"
+        },
+        "8081": {
+            "label": "Flink Engine"
+        }
+    },
+    "customizations": {
+        "vscode": {
+            "extensions": [
+                "ms-python.python",
+                "ms-azuretools.vscode-docker"
+            ]
+        }
+    },
+    "postCreateCommand": "chmod +x start_pipeline.ps1"
+}

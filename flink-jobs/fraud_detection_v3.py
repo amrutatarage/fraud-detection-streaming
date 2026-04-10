@@ -38,6 +38,7 @@ class FraudDetectorProcess(KeyedProcessFunction):
             user_id = txn['user_id']
             lat = txn.get('lat', 0.0)
             lon = txn.get('lon', 0.0)
+            fraud_reason = txn.get('fraud_reason', 'None')
             txn_time = datetime.datetime.utcnow().timestamp()
             
             # 1. Retrieve historical spending for this user
@@ -75,7 +76,8 @@ class FraudDetectorProcess(KeyedProcessFunction):
             
             status_msg = f"[NORMAL] {user_id} | ${amount} | Avg:${avg_spending:.2f}"
 
-            if prediction == 1:
+            # Detect fraud either by ML prediction or if the producer heuristic flagged explicitly
+            if prediction == 1 or fraud_reason != "None":
                 # Synchronous Database Insertion
                 conn = psycopg2.connect(
                     host='postgres', database='frauddb',
@@ -83,12 +85,12 @@ class FraudDetectorProcess(KeyedProcessFunction):
                 )
                 cur = conn.cursor()
                 cur.execute(
-                    'INSERT INTO fraud_alerts (user_id, amount, country, lat, lon) VALUES (%s, %s, %s, %s, %s)',
-                    (user_id, amount, country, lat, lon)
+                    'INSERT INTO fraud_alerts (user_id, amount, country, lat, lon, fraud_reason) VALUES (%s, %s, %s, %s, %s, %s)',
+                    (user_id, amount, country, lat, lon, fraud_reason)
                 )
                 conn.commit()
                 conn.close()
-                status_msg = f"[FRAUD SAVED] {user_id} | ${amount} | {country} | Avg:${avg_spending:.2f} | (+{int((amount/avg_spending)*100)}% spike)" if avg_spending > 0 else f"[FRAUD SAVED] {user_id} | ${amount} | {country}"
+                status_msg = f"[FRAUD SAVED] {user_id} | ${amount} | {country} | Reason: {fraud_reason} | (+{int((amount/avg_spending)*100)}% spike)" if avg_spending > 0 else f"[FRAUD SAVED] {user_id} | ${amount} | {country} | Reason: {fraud_reason}"
                 
                 # 7. Asynchronous Alerting (Mock Webhook) for High Confidence Fraud
                 if amount > 15000:
