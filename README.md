@@ -74,4 +74,3 @@ cd fraud-detection-project
 .\start_pipeline.ps1
 ```
 *(Once running, navigate to `http://localhost:3000` to view the Grafana dashboard. Login: `admin` / `admin`).*
-```
