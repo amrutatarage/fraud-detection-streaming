@@ -65,7 +65,7 @@ If you prefer to run this locally on a Windows machine with Docker Desktop insta
 
 **1. Clone the repository:**
 ```bash
-git clone [https://github.com/amrutatarage/fraud-detection-project.git](https://github.com/amrutatarage/fraud-detection-project.git)
+git clone [https://github.com/amrutatarage/fraud-detection-streaming.git](https://github.com/amrutatarage/fraud-detection-streaming.git)
 cd fraud-detection-project
 ```
 
