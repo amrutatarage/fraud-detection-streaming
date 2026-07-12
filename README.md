@@ -1,6 +1,6 @@
 # Real-Time Enterprise Fraud Detection Pipeline
 
-[![Open in GitHub Codespaces](https://github.com/codespaces/badge.svg)](https://codespaces.new/amrutatarage/fraud-detection-project)
+[![Open in GitHub Codespaces](https://github.com/codespaces/badge.svg)](https://codespaces.new/amrutatarage/fraud-detection-streaming)
 
 https://github.com/user-attachments/assets/507df2d8-2b0f-4df5-96cb-22e5a5a50ae2
 
@@ -65,8 +65,8 @@ If you prefer to run this locally on a Windows machine with Docker Desktop insta
 
 **1. Clone the repository:**
 ```bash
-git clone [https://github.com/amrutatarage/fraud-detection-project.git](https://github.com/amrutatarage/fraud-detection-project.git)
-cd fraud-detection-project
+git clone [https://github.com/amrutatarage/fraud-detection-streaming.git](https://github.com/amrutatarage/fraud-detection-streaming.git)
+cd fraud-detection-streaming
 ```
 
 **2. Run the automated boot script:**
